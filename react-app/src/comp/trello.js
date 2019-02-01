@@ -14,7 +14,7 @@ const data = {
         },
         {
             id: 'lane2',
-            title: 'Completed',
+            title: 'In Trasnport',
             label: '0/0',
             cards: []
         }
