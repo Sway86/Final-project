@@ -8,7 +8,7 @@ const data = {
             title: 'Waiting',
             label: '2/2',
             cards: [
-                { id: 'Card1', title: 'Write Blog', description: 'Can AI make memes', label: '30 mins' },
+                { id: 'Card1', title: 'Name: John Doe', description: 'Address: 901 International Parkway Lake Mary', label: '30 mins' },
                 { id: 'Card2', title: 'Pay Rent', description: 'Transfer via NEFT', label: '5 mins', metadata: { sha: 'be312a1' } }
             ]
         },
@@ -17,6 +17,14 @@ const data = {
             title: 'In Trasnport',
             label: '0/0',
             cards: []
+        },
+        {
+            id: 'lane3',
+            title: 'Done',
+            cards: [
+                {id: 'Card3', title: 'Name: Jane Doe', description: 'Address: 801 Internnational Parkway Lake Mary'}
+                
+            ]
         }
     ]
 }
