@@ -45,40 +45,40 @@ import { Board } from 'react-trello'
 // } 
 
 <Board
-    data={{
-        lanes: [
-            {
-                id: 'PLANNED',
-                title: 'Planned Tasks',
-                label: '20/70'
+ data={{
+  lanes: [
+   {
+    id: 'PLANNED',
+    title: 'Planned Tasks',
+    label: '20/70'
 
-            },
-            {
-                id: 'WIP',
-                title: 'Work In Progress',
-                label: '10/20'
+   },
+   {
+    id: 'WIP',
+    title: 'Work In Progress',
+    label: '10/20'
 
-            },
-            {
-                id: 'BLOCKED',
-                title: 'Blocked',
-                label: '0/0'
+   },
+   {
+    id: 'BLOCKED',
+    title: 'Blocked',
+    label: '0/0'
 
-            },
+   },
 
-        ]
-    }}
-    draggable
-    onDataChange={onDataChange}
-    handleDragStart={handleDragStart}
-    handleDragEnd={handleDragEnd}
-    handleLaneDragStart={handleLaneDragStart}
-    handleLaneDragEnd={handleLaneDragEnd}
+  ]
+ }}
+ draggable
+ onDataChange={onDataChange}
+ handleDragStart={handleDragStart}
+ handleDragEnd={handleDragEnd}
+ handleLaneDragStart={handleLaneDragStart}
+ handleLaneDragEnd={handleLaneDragEnd}
 />
 
 
 export default class Trello extends React.Component {
-    render() {
-        return <Board data={data} />
-    }
+ render() {
+  return <Board data={data} />
+ }
 } 
