@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 //import logo from './logo.svg';
 import './App.css';
-import Trello from './comp/Trello';
+import Trello from './comp/Trello/index';
 import Login from "./comp/pages/Login";
 //import Wrapper from "./comp/Wrapper";
 //import Title from "./comp/Title";

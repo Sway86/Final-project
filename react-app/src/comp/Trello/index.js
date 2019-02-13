@@ -1,109 +1,103 @@
-import React from 'react'
-import { Board } from 'react-trello'
+//this used to be trello.js
 
-function Person(name, address, phone) {
-    this.Name = name;
-    this.address = address;
-    this.phone = phone;
+import React, { Component } from 'react';
+import { Board } from 'react-trello';
+import { SIGTSTP } from 'constants';
+import {EditableBoard} from 'react-trello' ;
+let eventBus = undefined
 
-    var person = [
-        "name",
-        "address",
-        "phone"
-    ]
-}
+class Trello extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { value: '' };
 
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    };
 
-function Trello() {
-    function onDataChange() {
+    setEventBus = (handle) => {
+        eventBus = handle
+    };
+
+    handleChange(event) {
+        this.setState({ value: event.target.value });
+    };
+
+    handleSubmit(event) {
+        alert('From has been submitted: ' + SIGTSTP.state.value);
+        event.pareventDefault();
+    };
+
+    onDataChange = () => {
         console.log("I'm a changing...")
-    }
-    function onCardDelete() {
-        <button onclick="function onCardDelete()"> Click me</button>
+    };
 
-        // <button onclick="function onCardDelete()"> Click me {
-        //     console.log("I'm deleting something")
-        // }
-        // </button>
-        // function onCardDelete() {
-        //     console.log("I'm deleteing something")
-    }
-    // function onCardAdd() {
-    //     console.log("I'm adding something")
+    onCardClick = () => {
+        console.log("I'm clicking things")
+    };
+
+    onCardAdd = () => {
+        eventBus.publish({ type: 'ADD_CARD', laneId: 'COMPLETED', card: { id: "M1", title: "Buy Milk", label: "15 mins", description: "Also set reminder" } })
+        console.log("I'm adding things")
+    };
+
+    onCardDelete = () => {
+        //delete stuff has to update state to re-render
+        eventBus.publish({ type: 'REMOVE_CARD', laneId: 'PLANNED', cardId: "M1" })
+    };
+
+    // <Board data={data} eventBusHandle={setBusHandle}/>
+    // };
+
+    //         <onDataChange
+    //     onClick={() => { this.onDataChange(card.id) }
+    //     } />
+
+    // <button onclick="function onCardDelete()"> Click me {
+    //     console.log("I'm deleting something")
     // }
-    // function onCardClick() {
-    //     console.log("I'm clicking stuff")
+    // </button>
 
+    render() {
+        return (
+            <Board
+                data={{
+                    lanes: [
+                        {
+                            id: 'Waiting for drop off',
+                            title: 'Waiting for drop off',
+                            label: '20/70',
 
-    return (
+                        },
+                        {
+                            id: 'Waiting for pick up',
+                            title: 'Waiting for pick up',
+                            label: '10/20',
 
-        <Board
-            data={{
-                lanes: [
-                    {
-                        id: 'Waiting for drop off',
-                        title: 'Drop Off',
-                        cards: [
-                            {
-                                id: 'Waiting for drop off',
-                                title: 'Name: John Doe',
-                                description: 'Address: 901 Interntional Parkway Lake Mary',
-                                label: '30 mins'
-                            },
-                        ]
+                        },
+                        {
+                            id: 'In transport',
+                            title: 'In transport',
+                            label: '0/0',
 
-                    },
+                        },
+                        {
+                            id: 'Done',
+                            title: 'Done',
+                            label: '0/0',
+                        }
 
-                    {
-                        id: 'Waitng for pick up',
-                        title: 'Pick Up',
-                        cards: [
-                            {
-                                id: 'Waitng for pick up',
-                                title: 'Name: Jeb Bush',
-                                description: 'Address: 1601 Pennsylvania Ave Washington',
-                                label: '2 years'
-                            },
-                        ]
-                    },
-
-                    {
-                        id: 'In transport',
-                        title: 'In transposrt',
-                        cards: [
-                            {
-                                id: 'In Transport',
-                                title: 'Name: Jane Doe',
-                                description: 'Address: 1099 Heathrow Park Lane',
-                                label: '30mins'
-                            },
-                        ]
-
-                    },
-                    {
-                        id: 'Done',
-                        title: 'Done',
-                        cards: [
-                            {
-                                id: 'Done',
-                                title: 'Name: El Presidente',
-                                description: 'Address: 1601 Pennsylvania Ave Washington',
-                                label: '2 years'
-                            }
-                        ]
-
-                    },
-
-                ]
-            }}
-            draggable laneDraggable={false}
-            id="EditableBoard1"
-            onDataChange={onDataChange}
-            onCardDelete={onCardDelete}
-        // onCardAdd={onCardAdd}
-        // onCardClick={onCardClick}
-        />
-    )
+                    ]
+                }}
+                draggable laneDraggable={false}
+                editable={true}
+                id="EditableBoard1"
+                onDataChange={this.onDataChange}
+                onCardDelete={this.onCardDelete}
+                onCardAdd={this.onCardAdd}
+                onCardClick={this.onCardClick}
+            />
+        )
+    }
 }
-
 export default Trello
