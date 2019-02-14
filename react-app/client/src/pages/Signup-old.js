@@ -11,7 +11,7 @@ class Login extends Component {
     <Row>
      <Col size="md-12">
       <Jumbotron>
-       <h2>Login Form</h2>
+       <h2>Sign Up Form</h2>
        <form class="login">
 
         <div class="form-group">
@@ -29,7 +29,7 @@ class Login extends Component {
        </form>
 
        <br />
-       <p>Not a member? Sign up <a href="/signup">here</a></p>
+      <p>Already have an Account? Log in <a href="/login">here</a></p>
       </Jumbotron>
      </Col>
     </Row>
