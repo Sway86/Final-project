@@ -1,0 +1,10 @@
+nav.navbar.navbar-default {
+  margin-bottom: 0;
+}
+
+.nav-item {
+ display: inline;
+ position: relative;
+ padding: 10px 10px;
+}
+
