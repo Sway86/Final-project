@@ -1,15 +1,4 @@
-import React from 'react'
-import { Board } from 'react-trello'
 
-export default class App extends React.Component {
-    render() {
-        return <Board data={data} />
-    }
-}
-
-//Ref: 15 Sequelize > 03-Supplenebtal
-
-// Requiring necessary npm packages
 var express = require("express");
 var session = require("express-session");
 // Requiring passport as we've configured it
@@ -32,8 +21,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Requiring our routes
-//require("./routes/htmlroutes.js")(app);
-//require("./routes/apiroutes.js")(app);
+require("./routes/htmlroutes.js")(app);
+require("./routes/apiroutes.js")(app);
 
 // Syncing our database and logging a message to the user upon success
 db.sequelize.sync().then(function() {
