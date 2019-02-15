@@ -8,13 +8,17 @@ import { SIGTSTP } from 'constants';
 
 let eventBus = undefined
 // const eventBusHandle = undefined
-let data = undefined
+let data = require("")
 
 // eventBusHandle = () => {
 //     console.log("This is a special function that providers a publishHook to pass new events to the board")
 // }
 
 class Trello extends Component {
+
+    onDragEnd = (event) => {
+        ExtensionScriptApis.moveCard
+    }
 
     setEventBus = eventBus => {
         this.setState({ eventBus })
