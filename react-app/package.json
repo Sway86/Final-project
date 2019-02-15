@@ -17,6 +17,7 @@
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^4.1.0",
+    "express-session": "^1.15.6",
     "nodemon": "^1.18.7"
   },
   "dependencies": {
@@ -26,6 +27,10 @@
     "fs": "0.0.1-security",
     "if-env": "^1.0.4",
     "mongoose": "^5.3.16",
+    "mysql": "^2.16.0",
+    "mysql2": "^1.6.5",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
     "path": "^0.12.7",
     "react": "^16.8.1",
     "sequelize": "^4.42.0",
