@@ -3,10 +3,24 @@
 import React, { Component } from 'react';
 import { Board } from 'react-trello';
 import { SIGTSTP } from 'constants';
-import {EditableBoard} from 'react-trello' ;
+// import { EditableBoard } from 'react-trello';
+// import { eventBusHandle } from 'react-trello';
+
 let eventBus = undefined
+// const eventBusHandle = undefined
+let data = undefined
+
+// eventBusHandle = () => {
+//     console.log("This is a special function that providers a publishHook to pass new events to the board")
+// }
 
 class Trello extends Component {
+
+    setEventBus = eventBus => {
+        this.setState({ eventBus })
+    }
+    //this is new for ^^^setEventBus^^^
+
     constructor(props) {
         super(props);
         this.state = { value: '' };
@@ -60,8 +74,8 @@ class Trello extends Component {
 
     render() {
         return (
-            <Board
-                data={{
+            <Board data={data}
+                const data={{
                     lanes: [
                         {
                             id: 'Waiting for drop off',
@@ -89,15 +103,28 @@ class Trello extends Component {
 
                     ]
                 }}
+                data={this.state.boardData}
                 draggable laneDraggable={false}
                 editable={true}
+                customCardLAyout={true}
                 id="EditableBoard1"
-                onDataChange={this.onDataChange}
+                //onDataChange={this.onDataChange}
+                //old one^
+                onDataChange={this.ReceiveNewData}
                 onCardDelete={this.onCardDelete}
                 onCardAdd={this.onCardAdd}
                 onCardClick={this.onCardClick}
-            />
+                eventBusHandle={this.setEventBus} />
         )
     }
 }
-export default Trello
+
+class App extends React.Component {
+    render() {
+        return <Board data={data} />
+    }
+}
+export default App
+
+//old verison \/
+// export default Trello

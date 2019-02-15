@@ -1,5 +1,4 @@
 var mysql = require("mysql");
-var inquirer = require("inquirer");
 
 var connection = mysql.createConnection({
     host: "localhost",
@@ -17,5 +16,15 @@ var connection = mysql.createConnection({
 
 connection.connect(function (err) {
     if (err) throw err;
-    runSearch();
+    console.log("connected as id " + connection.threadId);
+    afterConnection();
+    //or this > connection.end();
 });
+
+function afterConnection() {
+    connection.query("SELECT * FROM people", function (err, res) {
+        if (err) throw err;
+        console.log(res);
+        connection.end();
+    });
+}
